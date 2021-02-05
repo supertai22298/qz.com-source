@@ -1,0 +1,96 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use 'styles/tokens' as qzcom-tokens;
+
+.intro {
+	@include fonts.pt-serif-400-1;
+
+	max-width: 660px;
+	margin-bottom: qzcom-tokens.$size-height-spacing-section;
+}
+
+.spinner {
+	text-align: center;
+}
+
+.error {
+	@include fonts.maison-500-2;
+
+	text-align: center;
+}
+
+.departments {
+	@include resets.ul;
+}
+
+.department + .department {
+	margin-top: qzcom-tokens.$size-height-spacing-block;
+}
+
+.employees {
+	@include resets.ul;
+
+	display: flex;
+	margin: 0 #{-#{tokens.$size-gutter-mobile}} 0;
+	padding: 0 tokens.$size-gutter-mobile 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+
+	@include media-queries.tablet-portrait-up {
+		margin: 0 #{-#{tokens.$size-gutter-tablet}} 0;
+		padding: 0 tokens.$size-gutter-tablet 0;
+	}
+
+	@include media-queries.desktop-up {
+		margin: 0;
+		padding: 0;
+		flex-wrap: wrap;
+		overflow: visible;
+	}
+}
+
+.employee {
+	width: 100px;
+	padding-right: 40px;
+	list-style: none;
+	text-align: center;
+	flex-shrink: 0;
+
+	@include media-queries.tablet-portrait-up {
+		width: 120px;
+		margin-bottom: 30px;
+	}
+}
+
+.department-title {
+	@include fonts.maison-800-6;
+
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+}
+
+.headshot {
+	margin-bottom: 8px;
+	border-radius: 100%;
+	overflow: hidden;
+}
+
+.employee-link {
+	display: block;
+}
+
+.employee-name {
+	@include fonts.maison-500-2;
+
+	margin: 0 0 4px;
+}
+
+.job-title {
+	@include fonts.maison-500-1;
+
+	color: color-scheme.$typography-faint;
+	margin: 0;
+}

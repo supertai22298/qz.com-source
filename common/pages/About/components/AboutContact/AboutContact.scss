@@ -1,0 +1,60 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+
+.container {
+	max-width: 800px;
+}
+
+.intro {
+	@include fonts.pt-serif-400-1;
+
+	@include media-queries.tablet-landscape-up {
+		max-width: 465px;
+	}
+}
+
+.methods {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+
+	li {
+		padding: 25px 0;
+		border-bottom: borders.$solid-decorative;
+
+		@include media-queries.tablet-portrait-up {
+			padding: 30px 0;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			padding-right: 100px;
+		}
+
+		@include media-queries.desktop-up {
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	p {
+		@include fonts.maison-500-2;
+
+		color: color-scheme.$typography-faint;
+		margin-bottom: 0;
+
+		& + & {
+			margin-bottom: 16px;
+		}
+	}
+}
+
+.subheading {
+	@include fonts.maison-800-3;
+}
+

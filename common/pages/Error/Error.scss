@@ -1,0 +1,6 @@
+@use '~styles/tokens';
+
+.container {
+	margin: tokens.$size-height-spacing-page-end 0;
+	text-align: center;
+}

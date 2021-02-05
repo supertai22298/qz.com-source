@@ -1,0 +1,53 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+
+.container {
+	@include resets.ul;
+
+	--color: #{color-scheme.$typography};
+
+	display: flex;
+	justify-content: center;
+	margin: 25px 0 0;
+}
+
+.item {
+	@include resets.reset;
+
+	max-width: 100px;
+	text-align: center;
+	flex: 1;
+	border-right: borders.$solid-decorative;
+
+	&:last-child {
+		border-right: 0;
+	}
+
+	a {
+		display: block;
+	}
+}
+
+.name {
+	@include fonts.maison-500-1;
+
+	display: block;
+	text-align: center;
+	margin: 4px 0 0;
+	color: color-scheme.$typography-faint;
+}
+
+svg.icon {
+	margin: auto;
+	width: 25px;
+	height: 25px;
+	background-size: 25px;
+	background-repeat: no-repeat;
+	margin-bottom: 4px;
+}
+
+.youtube.icon {
+	width: 35px;
+}

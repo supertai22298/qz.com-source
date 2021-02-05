@@ -1,0 +1,15 @@
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+
+.content {
+	@include fonts.pt-serif-400-1;
+
+	& > p {
+		margin-top: 0;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		column-count: 2;
+		column-gap: 45px;
+	}
+}

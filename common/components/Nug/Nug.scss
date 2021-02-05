@@ -1,0 +1,27 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~styles/mixins/layout';
+@use '~@quartz/styles/scss/media-queries';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+
+	&.show-paywall {
+		@include layout.paywall;
+	}
+}
+
+.heading {
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+}
+
+.app-button {
+	@include media-queries.desktop-up {
+		display: none;
+	}
+}
+
+.app-head {
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+}

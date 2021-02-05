@@ -1,0 +1,51 @@
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/mixins/forms';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	width: 100%;
+}
+
+.style-inline {
+	max-width: qzcom-tokens.$size-max-width-content-article;
+
+	@include media-queries.tablet-portrait-up {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.style-inline.contents {
+	margin: 0 auto 12px auto;
+
+	@include media-queries.tablet-portrait-up {
+		margin: 0 10px 0 0;
+	}
+
+	flex-grow: 1;
+}
+
+.style-inline.button {
+	@include media-queries.tablet-portrait-up {
+		flex-basis: 143px;
+	}
+}
+
+.field-container {
+	margin-bottom: 30px;
+
+	&:last-child {
+		margin-bottom: 15px;
+	}
+}
+
+.error {
+	@include forms.form-field-description;
+
+	width: 100%;
+	text-align: left;
+	margin-top: 5px;
+	color: tokens.$color-red;
+	display: block;
+}

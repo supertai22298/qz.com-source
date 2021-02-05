@@ -1,0 +1,139 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: qzcom-tokens.$z-index-six;
+	background-color: color-scheme.$background-2;
+	border-top: borders.$solid-decorative;
+	padding: 18px 25px;
+
+	@include media-queries.tablet-portrait-up {
+		padding: 30px 25px 18px;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		display: flex;
+		flex-flow: row;
+		justify-content: center;
+		padding: 15px 25px 18px;
+	}
+}
+
+.content {
+	font-size: 14px;
+	line-height: 18px;
+
+	@include media-queries.tablet-portrait-up {
+		font-size: 16px;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		margin-right: 50px;
+		max-width: 550px;
+	}
+
+	p:first-of-type {
+		margin-top: 0;
+
+
+		@include media-queries.tablet-portrait-up {
+			margin-bottom: 9px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			margin-top: 9px;
+		}
+	}
+
+	p:last-of-type {
+		@include media-queries.tablet-portrait-up {
+			margin: 0 0 12px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			margin: 0;
+		}
+	}
+
+	p:nth-of-type(2) {
+		@include media-queries.tablet-portrait-up {
+			margin-bottom: 3px;
+		}
+	}
+}
+
+.form {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	font-size: 14px;
+
+	@include media-queries.tablet-portrait-up {
+		justify-content: flex-start;
+		font-size: 16px;
+		align-items: baseline;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		width: 400px;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 50%;
+		height: 30px;
+		font-size: 14px;
+		line-height: 0;
+
+		@include media-queries.tablet-portrait-up {
+			height: 45px;
+			font-size: 16px;
+			margin-top: 18px;
+			max-width: 220px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			align-self: center;
+			margin-top: 0;
+			max-width: none;
+		}
+
+		&:first-of-type {
+			margin-right: 10px;
+
+			@include media-queries.tablet-landscape-up {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	.manage-preferences {
+		@include media-queries.tablet-portrait-up {
+			margin-left: 10px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			line-height: 85px;
+			margin-left: 0;
+		}
+	}
+}
+
+.row {
+	@include media-queries.tablet-landscape-up {
+		display: flex;
+		flex-flow: row;
+		max-width: 95%;
+	}
+}

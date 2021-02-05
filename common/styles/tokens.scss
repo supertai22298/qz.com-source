@@ -1,0 +1,55 @@
+/*
+	qz.com style tokens
+
+	Definitions for commonly used tokens on qz.com.
+
+	We use the CTI naming convention: [category]-[type]-[item]
+	(More info: https://amzn.github.io/style-dictionary/#/properties?id=category-type-item)
+
+	This file is for tokens that pertain to qz.com only. For tokens that
+	should apply to all of our products, see https://github.com/Quartz/styles
+*/
+
+$size-height-ad-billboard: 250px;
+$size-height-ad-half-page: 600px;
+$size-height-ad-leaderboard: 90px;
+$size-height-ad-medium-rectangle: 250px;
+$size-height-ad-mobile-leaderboard: 50px;
+$size-height-aspect-ratio-default: 56.249%; /* -0.001 prevents subpixel rendering from adding unwanted height when translating */
+$size-height-nav-mobile: 45px;
+$size-height-nav-tablet: 55px;
+$size-height-spacing-block: 28px;
+$size-height-spacing-block-mobile: 20px;
+$size-height-spacing-heading: 16px;
+$size-height-spacing-list-item: 16px;
+$size-height-spacing-section: 60px;
+$size-height-spacing-page-end: 120px;
+$size-max-width-content-article: 620px;
+$size-max-width-content-tablet: $size-max-width-content-article;
+$size-max-width-content: 940px;
+$size-max-width-image-large: 1150px;
+$size-max-width-site: 1600px;
+$size-max-width-video-large: $size-max-width-image-large;
+$size-width-ad-billboard: 970px;
+$size-width-ad-half-page: 300px;
+$size-width-ad-leaderboard: 728px;
+$size-width-ad-medium-rectangle: 300px;
+$size-width-ad-mobile-leaderboard: 320px;
+$size-width-feature-max: 780px;
+$size-width-inline-image-extra-large: 1260px;
+$size-width-inline-image-extra-large: 1260px;
+$size-width-inline-image-extra-small: 270px;
+$size-width-inline-image-large: 940px;
+$size-width-inline-image-small: 350px;
+$size-width-text-indent: 24px;
+$z-index-eight: 800;
+$z-index-five: 500;
+$z-index-four: 400;
+$z-index-minus-one: -100;
+$z-index-minus-two: -200;
+$z-index-one: 100;
+$z-index-seven: 700;
+$z-index-six: 600;
+$z-index-three: 300;
+$z-index-two: 200;
+$z-index-zero: 0;

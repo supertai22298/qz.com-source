@@ -1,0 +1,126 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/states';
+@use '~styles/tokens' as qzcom-tokens;
+@use '~styles/mixins/animations';
+
+@include animations.draw-line-keyframes;
+
+.container {
+	position: relative;
+}
+
+.header {
+	@include fonts.maison-800-9;
+
+	margin: 0 0 8px 0;
+}
+
+/**
+ * This is not ideal; instead we should be applying this to ArticleContentBlocks
+ * styles. However, there are too many places that rely on the last block having
+ * margin instead of applying their own. :(
+ */
+.blocks p:last-child {
+	margin-bottom: 0;
+}
+
+.callout {
+	position: relative;
+}
+
+.close {
+	@include resets.button;
+	@include states.fade-on-hover;
+
+	cursor: pointer;
+	padding: 16px;
+	position: absolute;
+	right: -16px;
+	top: -16px;
+
+	span {
+		display: none;
+	}
+}
+
+.close-icon {
+	--color: #{color-scheme.$typography};
+
+	width: 12px;
+	height: 12px;
+
+	@include media-queries.tablet-portrait-up {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.scribble {
+	position: relative;
+
+	&::before {
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		bottom: 0;
+		content: '';
+		left: -10px;
+		position: absolute;
+		right: -10px;
+		top: 72%;
+	}
+}
+
+.variant0::before {
+	background-image: url('/public/svg/highlight-thick-circle-2.svg?v=2');
+	top: 0;
+}
+
+.variant1::before {
+	background-image: url('/public/svg/highlight-thick-underline-2.svg');
+}
+
+.variant2::before {
+	background-image: url('/public/svg/highlight-thick-underline-3.svg');
+}
+
+.variant3::before {
+	background-image: url('/public/svg/highlight-thick-circle-3.svg');
+	left: -5%;
+	right: -20%;
+	top: 10%;
+}
+
+.variant4::before {
+	background-image: url('/public/svg/highlight-thick-underline-4.svg');
+}
+
+.variant5::before {
+	background-image: url('/public/svg/highlight-thick-underline-5.svg');
+	top: 68%;
+}
+
+.scribble-final {
+	height: 100%;
+	left: -5%;
+	position: absolute;
+	top: 35%;
+	width: 108%;
+
+	& path {
+		@include animations.draw-line(0.5s, 0.5s);
+
+		/**
+		 * This matches the stroke-dasharray specified in the SVG and is the thing
+		 * that will be animated. Think of it as a big dashed line where the length
+		 * of the dash is equal to the length of the line.
+		 */
+		stroke-dashoffset: 900;
+	}
+}
+
+.hr {
+	margin: qzcom-tokens.$size-height-spacing-block 0;
+}

@@ -1,0 +1,27 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~styles/tokens' as qzcom-tokens;
+
+.email-field {
+	width: 100%;
+}
+
+.disclaimer {
+	@include fonts.maison-500-1;
+
+	margin: 8px 0 0;
+	color: color-scheme.$typography-faint;
+}
+
+.login {
+	@include fonts.maison-800-4;
+
+	text-align: center;
+	margin: qzcom-tokens.$size-height-spacing-block 0 0;
+}
+
+.cta {
+	@include fonts.maison-800-4;
+
+	text-align: center;
+}

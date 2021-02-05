@@ -1,0 +1,40 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/mixins/article-media';
+
+.container {
+	@include article-media.medium;
+
+	&.align-left {
+		@include article-media.medium--left-align;
+	}
+
+	&.small {
+		@include article-media.small--left-align;
+
+		&.align-right {
+			@include article-media.small;
+		}
+	}
+
+	&.large {
+		@include article-media.large;
+	}
+
+	&.extra-large {
+		@include article-media.extra-large--centered;
+
+		&.align-left {
+			@include article-media.full-bleed;
+		}
+	}
+}
+
+.iframe {
+	border: 0;
+	border-radius: 4px;
+	width: 100%;
+	background-color: tokens.$color-off-white;
+	box-sizing: border-box;
+}

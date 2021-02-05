@@ -1,0 +1,24 @@
+@use '~@quartz/styles/scss/fonts';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	text-align: center;
+	margin: 0 auto qzcom-tokens.$size-height-spacing-section;
+	max-width: qzcom-tokens.$size-max-width-content-tablet;
+}
+
+.heading {
+	@include fonts.maison-800-6;
+
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+}
+
+.description {
+	@include fonts.maison-500-3;
+
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+}
+
+.content {
+	text-align: left;
+}

@@ -1,0 +1,6 @@
+@use '~@quartz/styles/scss/color-scheme';
+
+.description {
+	color: color-scheme.$typography;
+	line-height: 1.5;
+}

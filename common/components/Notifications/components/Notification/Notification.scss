@@ -1,0 +1,106 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~@quartz/styles/scss/helpers/a11y';
+@use '~styles/mixins/animations';
+
+@include animations.popout-keyframes;
+
+.container {
+	/* This component is intentionally unthemed */
+
+	background: tokens.$color-white;
+	color: tokens.$color-black;
+	box-sizing: border-box;
+	padding: 15px;
+	border-radius: tokens.$size-border-radius;
+	box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.08);
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	animation: animate-open 0.25s ease-in-out;
+
+	&.dismissed {
+		animation: animate-closed 0.25s ease-in-out;
+		animation-fill-mode: forwards;
+	}
+
+	&.hidden {
+		display: none;
+	}
+}
+
+.icon-container {
+	margin-right: 10px;
+	width: 30px;
+	flex-shrink: 0;
+
+	@include media-queries.tablet-portrait-up {
+		width: 35px;
+	}
+
+	svg {
+		@include animations.popout(0.1s);
+
+		width: 100%;
+		height: auto;
+	}
+}
+
+.message {
+	@include fonts.maison-800-2;
+
+	flex-grow: 1;
+	margin: 0;
+}
+
+.dismiss {
+	@include resets.button;
+
+	cursor: pointer;
+	margin-left: 10px;
+
+	&::before {
+		display: block;
+		content: '×';
+		font-size: 30px;
+	}
+
+	&:hover::before {
+		color: color-scheme.$accent;
+	}
+
+	@include media-queries.tablet-portrait-up {
+		font-size: 40px;
+	}
+}
+
+.label {
+	@include a11y.visually-hidden;
+}
+
+@keyframes animate-open {
+	from {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes animate-closed {
+	from {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	to {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+}

@@ -1,0 +1,6 @@
+@use '~styles/mixins/article-media';
+
+.figure-container,
+.article-card-container {
+	@include article-media.medium;
+}

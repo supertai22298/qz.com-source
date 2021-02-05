@@ -1,0 +1,333 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/tokens' as qzcom-tokens;
+@use '~styles/mixins/layout';
+
+$breakpoint-mobile: 424px;
+
+.blockquote,
+.p,
+.pre,
+.table {
+	@include layout.block-spacing;
+}
+
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	// Headings get special treatment
+	margin-bottom: qzcom-tokens.$size-height-spacing-heading;
+
+	// Headings that come after a content block should have extra spacing
+	.blockquote + &,
+	.ol + &,
+	.p + &,
+	.pre + &,
+	.table + &,
+	.ul + &,
+	/*
+		The next two selectors are a bit hacky. We're trying to target
+		article headings that come after article media, like images
+		and interactives.
+	*/
+	div + &,
+	figure + & {
+		margin-top: qzcom-tokens.$size-height-spacing-section;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-right {
+		text-align: right;
+	}
+}
+
+.p {
+	line-height: 1.5;
+
+	> img {
+		max-width: 100%;
+		height: auto;
+	}
+
+	&.align-center {
+		text-align: center;
+	}
+
+	&.align-right {
+		text-align: right;
+	}
+}
+
+.blockquote {
+	@include layout.blockquote;
+}
+
+.ol,
+.ul {
+	@include resets.ul;
+	@include layout.block-spacing;
+
+	li {
+		position: relative;
+		margin-bottom: qzcom-tokens.$size-height-spacing-list-item;
+		line-height: 1.5;
+		padding-left: qzcom-tokens.$size-width-text-indent;
+	}
+}
+
+.ol {
+	counter-reset: article-counter;
+
+	li::before {
+		@include fonts.maison;
+
+		position: absolute;
+		left: 0;
+		font-weight: 800;
+		font-size: 0.75em;
+		line-height: 2;
+		counter-increment: article-counter;
+		content: counters(article-counter, ' ');
+		color: color-scheme.$typography-faint;
+	}
+}
+
+.ol > li > ol {
+	list-style-type: none;
+	counter-reset: nested-counter;
+	margin-top: qzcom-tokens.$size-height-spacing-list-item;
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+
+	> li::before {
+		counter-increment: nested-counter;
+		content: counters(nested-counter, ' ');
+	}
+}
+
+.ul li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.75em;
+	transform: translateY(-50%);
+	width: 6px;
+	height: 6px;
+	background: color-scheme.$typography-faint;
+	border-radius: 100%;
+}
+
+.h1,
+.h2 {
+	@include fonts.maison-800-5;
+}
+
+.h3,
+.h4,
+.h5,
+.h6 {
+	@include fonts.maison-extended-700-2;
+
+	color: color-scheme.$accent;
+}
+
+.pre {
+	white-space: pre-wrap;
+	color: color-scheme.$typography;
+	background-color: color-scheme.$background-3;
+	padding: 17px 20px;
+	font-size: 16px;
+	line-height: 24px;
+	font-family: Consolas, monaco, monospace;
+
+	@include media-queries.tablet-portrait-up {
+		padding: 27px 30px;
+		line-height: 26px;
+		font-size: 20px;
+	}
+}
+
+.guide {
+	&.h2 {
+		@include fonts.maison-800-6;
+
+		border-image: url('/public/svg/slash-light.svg') 10 0 0 0 fill round;
+		border-image-width: 10px 0 0 0;
+		counter-increment: list;
+
+		@include media-queries.tablet-portrait-up {
+			margin-top: 60px;
+		}
+
+		&::before {
+			font-size: 60px;
+			display: block;
+			content: '0'counter(list);
+			color: color-scheme.$typography-faint;
+			padding: 40px 0 10px;
+			font-weight: 800;
+
+			@include media-queries.tablet-portrait-up {
+				font-size: 100px;
+				padding: 60px 0 10px;
+			}
+		}
+	}
+}
+
+.table {
+	text-align: left;
+	display: table;
+	width: 100%;
+	color: color-scheme.$typography;
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	tr:nth-child(even) {
+		background-color: color-scheme.$background-3;
+	}
+
+	tr:nth-child(odd) {
+		background-color: transparent;
+	}
+
+	td,
+	th {
+		padding: 12px 16px;
+		line-height: 1.1em;
+	}
+
+	th {
+		font-weight: bold;
+		border-bottom: borders.$solid-decorative;
+
+		@include fonts.maison-500-3;
+	}
+
+	&.multi-column {
+		@media only screen and (max-width: $breakpoint-mobile) {
+			border: borders.$solid-decorative;
+			line-height: 20px;
+			width: 100%;
+			display: block;
+			position: relative;
+		}
+
+		thead,
+		tbody:first-child tr:first-child {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				zoom: 1;
+				display: block;
+				float: left;
+				max-width: 120px;
+				white-space: nowrap;
+				border-right: 3px solid tokens.$color-light-gray;
+			}
+
+			&::after {
+				@media only screen and (max-width: $breakpoint-mobile) {
+					visibility: hidden;
+					display: block;
+					font-size: 0;
+					content: " ";
+					clear: both;
+					height: 0;
+				}
+			}
+
+			tr {
+				@media only screen and (max-width: $breakpoint-mobile) {
+					display: block;
+				}
+			}
+
+			th {
+				@media only screen and (max-width: $breakpoint-mobile) {
+					text-align: left;
+					overflow: auto;
+					border-bottom: 0;
+					display: block;
+					padding: 8px 16px 8px 10px;
+				}
+			}
+		}
+
+		thead + tbody {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				display: block;
+				width: auto;
+				position: relative;
+				overflow-x: auto;
+				white-space: nowrap;
+			}
+
+			tr {
+				@media only screen and (max-width: $breakpoint-mobile) {
+					display: inline-block;
+					vertical-align: top;
+				}
+			}
+		}
+
+		tbody:first-child {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				display: block;
+				width: auto;
+				position: relative;
+				overflow-x: auto;
+				white-space: nowrap;
+			}
+
+			tr:not(:first-child) {
+				@media only screen and (max-width: $breakpoint-mobile) {
+					display: inline-block;
+					vertical-align: top;
+				}
+			}
+		}
+
+		tr {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				border-bottom: 0;
+			}
+		}
+
+		th,
+		td {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				font-size: 1rem;
+				margin: 0;
+				height: 20%;
+				vertical-align: top;
+				line-height: 1.2em;
+			}
+		}
+
+		td {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				display: block;
+				min-height: 1.1em;
+				text-align: left;
+				padding: 8px 16px;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 0;
+			}
+		}
+
+		th {
+			@media only screen and (max-width: $breakpoint-mobile) {
+				border-bottom: 0;
+				border-left: 0;
+			}
+		}
+	}
+}

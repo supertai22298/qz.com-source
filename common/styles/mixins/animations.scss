@@ -1,0 +1,46 @@
+@use '~@quartz/styles/scss/tokens';
+
+@mixin scroll-in($delay: 0s) {
+	transform: translate3d(0, 75px, 0);
+	transition-delay: $delay;
+	transition-duration: tokens.$time-slowly;
+	transition-property: opacity, transform;
+	transition-timing-function: cubic-bezier(0.01, 0.11, 0.24, 1.13);
+
+	&.visible {
+		transform: none;
+	}
+}
+
+/*
+	Custom CSS animations
+
+	How to use:
+	- Include the keyframes mixin in the root of your file (outside a selector)
+	- Include the animation mixin in the selector as you would normally use the animation rule
+*/
+
+@mixin draw-line-keyframes {
+	@keyframes draw-line {
+		to {
+			stroke-dashoffset: 1;
+		}
+	}
+}
+
+@mixin draw-line($duration: 0.5s, $delay: 0s) {
+	animation: draw-line $duration ease-in $delay;
+	animation-fill-mode: forwards;
+}
+
+@mixin popout-keyframes($scale: 1.15) {
+	@keyframes popout {
+		50% {
+			transform: scale($scale);
+		}
+	}
+}
+
+@mixin popout($delay: 0s) {
+	animation: popout tokens.$time-slowly ease-in-out $delay;
+}

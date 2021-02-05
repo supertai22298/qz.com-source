@@ -1,0 +1,191 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/positioning';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~@quartz/styles/scss/states';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	--color: #{color-scheme.$typography};
+
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: qzcom-tokens.$z-index-six;
+
+	@media print {
+		position: absolute;
+		border: 0;
+	}
+}
+
+// A faux bottom border for the nav that only appears when the user
+// scrolls down by 1 or more pixels. Until then, it will sit behind the
+// nav-items element.
+.scroll-border {
+	position: sticky;
+	border-bottom: borders.$solid-decorative;
+	top: qzcom-tokens.$size-height-nav-mobile;
+	z-index: qzcom-tokens.$z-index-five;
+
+	@include media-queries.tablet-landscape-up {
+		top: qzcom-tokens.$size-height-nav-tablet;
+	}
+}
+
+.nav-items {
+	@include resets.ul;
+
+	background-color: color-scheme.$background-1;
+	display: flex;
+	height: qzcom-tokens.$size-height-nav-mobile;
+
+	@include media-queries.tablet-landscape-up {
+		height: qzcom-tokens.$size-height-nav-tablet;
+	}
+}
+
+.nav-item.hide-on-mobile {
+	display: none;
+
+	@include media-queries.tablet-landscape-up {
+		display: block;
+	}
+}
+
+.nav-item:first-child .link {
+	padding-left: 18px;
+}
+
+.nav-item:last-child .link {
+	padding-right: 18px;
+}
+
+.toggle-menu {
+	@include resets.button;
+	@include states.fade-on-hover;
+
+	cursor: pointer;
+}
+
+.link {
+	@include fonts.maison-extended;
+
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: inherit;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	padding: 0 12px;
+	line-height: 1;
+}
+
+.flyout-container {
+	display: none;
+	box-sizing: border-box;
+	position: absolute;
+	top: 100%;
+	width: 440px;
+	height: 540px;
+	max-height: 80vh;
+	padding: 40px;
+	overflow-y: scroll;
+	border: borders.$solid-decorative;
+	border-radius: tokens.$size-border-radius;
+	background-color: color-scheme.$background-2;
+	z-index: qzcom-tokens.$z-index-one;
+
+	&.left {
+		left: 0;
+	}
+
+	&.right {
+		right: 0;
+	}
+}
+
+.flyout-container:focus,
+.flyout-container:focus-within,
+.flyout-container:hover,
+.flyout-trigger.with-hover:hover + .flyout-container {
+	display: block;
+}
+
+.flyout-description {
+	@include fonts.maison-500-1;
+
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+	color: color-scheme.$typography-faint;
+}
+
+.logo-container {
+	flex-grow: 1;
+}
+
+.logo-link {
+	@include positioning.center;
+
+	line-height: 1;
+}
+
+.logo {
+	width: auto;
+	height: 19px;
+
+	@include media-queries.tablet-landscape-up {
+		height: 23px;
+	}
+
+	&.work,
+	&.africa,
+	&.india {
+		height: 16px;
+
+		@include media-queries.tablet-landscape-up {
+			height: 20px;
+		}
+	}
+}
+
+.subscribe-cta {
+	background-color: color-scheme.$accent;
+	color: color-scheme.$background-2;
+	border-radius: tokens.$size-border-radius;
+	white-space: nowrap;
+	padding: 8px 12px;
+}
+
+.placeholder-row {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: qzcom-tokens.$size-height-spacing-list-item;
+}
+
+.placeholder-image {
+	width: 50px;
+	margin-right: 10px;
+	overflow: hidden;
+	border-radius: 100%;
+}
+
+.placeholder-text {
+	flex-grow: 1;
+}
+
+.latest-articles {
+	@include resets.ul;
+}
+
+.latest-article-item + .latest-article-item {
+	margin-top: qzcom-tokens.$size-height-spacing-list-item;
+}
+
+.latest-article-link {
+	display: block;
+}

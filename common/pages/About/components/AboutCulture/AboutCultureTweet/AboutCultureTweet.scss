@@ -1,0 +1,81 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+
+.container {
+	margin: 0 -#{tokens.$size-gutter-mobile} 70px auto;
+	width: 100%;
+
+	@include media-queries.tablet-portrait-up {
+		width: auto;
+		margin-right: -#{tokens.$size-gutter-tablet};
+	}
+
+	@include media-queries.desktop-up {
+		margin-right: -150px;
+		margin-top: -100px;
+	}
+}
+
+.contents {
+	width: 80%;
+	margin: 0 0 0 auto;
+	padding-right: tokens.$size-gutter-mobile;
+	max-width: 382px;
+
+	@include media-queries.tablet-portrait-up {
+		width: auto;
+		padding-right: tokens.$size-gutter-tablet;
+	}
+
+	@include media-queries.desktop-up {
+		max-width: 500px;
+		padding-right: tokens.$size-gutter-desktop;
+	}
+
+	@include media-queries.desktop-large-up {
+		max-width: 580px;
+		padding-right: 220px;
+	}
+}
+
+.tweet {
+	@include fonts.maison-800-6;
+
+	margin: 0 0 16px;
+	padding: 0 0 16px;
+	position: relative;
+
+	&::after {
+		content: '';
+		width: calc(100% + #{tokens.$size-gutter-mobile});
+		margin-right: -#{tokens.$size-gutter-mobile};
+		height: 0;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		border-bottom: borders.$solid-decorative;
+
+		@include media-queries.tablet-portrait-up {
+			width: calc(100% + #{tokens.$size-gutter-tablet});
+			margin-right: -#{tokens.$size-gutter-tablet};
+		}
+
+		@include media-queries.desktop-up {
+			width: calc(100% + #{tokens.$size-gutter-desktop});
+			margin-right: -#{tokens.$size-gutter-desktop};
+		}
+
+		@include media-queries.desktop-large-up {
+			width: calc(100% + 220px);
+			margin-right: -220px;
+		}
+	}
+}
+
+.source {
+	@include fonts.maison-500-2;
+
+	margin: 0;
+}

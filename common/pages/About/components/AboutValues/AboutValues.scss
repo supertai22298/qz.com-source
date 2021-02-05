@@ -1,0 +1,183 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	p {
+		line-height: 1.6;
+
+		@include media-queries.tablet-portrait-up {
+			font-size: 20px;
+		}
+	}
+
+	h4 {
+		@include fonts.maison-800-6;
+	}
+
+	h5 {
+		@include fonts.maison-800-3;
+
+		margin: 0 0 10px;
+
+		@include media-queries.tablet-portrait-up {
+			margin: 40px 0 20px;
+		}
+	}
+
+	hr {
+		border-bottom: borders.$solid-decorative;
+		border: 0;
+		margin: 50px 0;
+		height: 1px;
+
+		@include media-queries.desktop-up {
+			margin: 0;
+		}
+	}
+}
+
+.content {
+	@include media-queries.tablet-landscape-up {
+		display: flex;
+	}
+}
+
+.values {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	flex-basis: 0;
+	flex-grow: 1;
+
+	&:first-child {
+		@include media-queries.tablet-landscape-up {
+			margin-right: 46px;
+		}
+	}
+}
+
+.value {
+	margin: 0;
+	padding: 50px 0 0;
+
+	@include media-queries.tablet-portrait-up {
+		padding-top: 80px;
+	}
+
+	@include media-queries.desktop-up {
+		padding-top: 30px;
+	}
+
+	h4 {
+		width: 6.3em;
+		margin: 0 0 10px;
+
+		@include media-queries.tablet-portrait-up {
+			margin-bottom: 20px;
+		}
+	}
+
+	&:first-child {
+		@include media-queries.tablet-portrait-up {
+			padding-top: 45px;
+		}
+	}
+
+	/* specifically for "Force of ideas" and "Spirit of generosity" */
+	&:last-child h4 {
+		width: auto;
+	}
+
+	.decoration-2 {
+		@include media-queries.tablet-landscape-up {
+			margin-bottom: 30px;
+		}
+
+		@include media-queries.desktop-up {
+			margin-bottom: 35px;
+		}
+	}
+}
+
+
+.decoration-1 {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: qzcom-tokens.$z-index-zero;
+		width: 120px;
+		height: 18px;
+		top: 100%;
+		left: -5px;
+		background: url('/public/svg/highlight-double-underline-mobile.svg') no-repeat;
+		background-size: contain;
+
+		@include media-queries.tablet-portrait-up {
+			background-image: url('/public/svg/highlight-double-underline.svg');
+			width: 165px;
+			height: 30px;
+			left: -10px;
+		}
+	}
+}
+
+.decoration-2 {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: qzcom-tokens.$z-index-zero;
+		width: 150px;
+		height: 25px;
+		top: 100%;
+		left: -5px;
+		background: url('/public/svg/highlight-thick-scribble.svg') no-repeat;
+		background-size: 100%;
+
+		@include media-queries.tablet-landscape-up {
+			width: 200px;
+			height: 35px;
+		}
+
+		@include media-queries.desktop-up {
+			width: 275px;
+			height: 40px;
+		}
+	}
+}
+
+.decoration-3 {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: qzcom-tokens.$z-index-zero;
+		width: 190px;
+		height: 110px;
+		top: 50%;
+		left: 30%;
+		transform: translate(-50%, -50%);
+		background: url('/public/svg/decoration-circle-mobile.svg') no-repeat;
+		background-size: contain;
+
+		@include media-queries.tablet-portrait-up {
+			background-image: url('/public/svg/decoration-circle.svg');
+			width: 280px;
+			height: 130px;
+			left: 63%;
+			top: 45%;
+		}
+
+		@include media-queries.desktop-up {
+			width: 361px;
+			height: 155px;
+			margin-top: -7px;
+		}
+	}
+}

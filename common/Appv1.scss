@@ -1,0 +1,8 @@
+@use '~@quartz/styles/scss/base';
+@use '~@quartz/styles/scss/color-scheme';
+@use 'styles/defaults' as *;
+@use 'styles/fonts' as *;
+
+.browser-link {
+	color: color-scheme.$accent;
+}

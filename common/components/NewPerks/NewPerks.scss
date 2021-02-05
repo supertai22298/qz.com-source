@@ -1,0 +1,15 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+
+.title {
+	@include fonts.maison-800-2;
+
+	margin-bottom: 4px;
+}
+
+.description {
+	@include fonts.maison-500-2;
+
+	color: color-scheme.$typography-faint;
+	margin: 0;
+}

@@ -1,0 +1,35 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/positioning';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/helpers/a11y';
+
+.container {
+	@include resets.reset;
+}
+
+.image-container {
+	position: relative;
+}
+
+.credit-label {
+	@include a11y.visually-hidden;
+}
+
+.credit {
+	@include fonts.maison;
+	@include positioning.rotate-left;
+
+	right: -1.5em;
+	bottom: 0;
+	font-size: 8px;
+	text-transform: uppercase;
+	color: color-scheme.$typography-faint;
+}
+
+.caption {
+	@include fonts.maison-500-1;
+
+	color: color-scheme.$typography-faint;
+	margin-top: 4px;
+}

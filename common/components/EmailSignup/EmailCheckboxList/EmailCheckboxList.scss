@@ -1,0 +1,43 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+
+.checks {
+	@include resets.ul;
+}
+
+.checkbox-wrapper {
+	display: flex;
+	margin-bottom: 16px;
+}
+
+.checkbox-wrapper:last-child {
+	margin-bottom: 20px;
+}
+
+.checkbox-title {
+	margin: 0 0 4px 0;
+
+	@include fonts.maison-800-3;
+}
+
+.checkbox-copy {
+	color: color-scheme.$typography-faint;
+}
+
+.checkbox-label {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+}
+
+.view-more {
+	margin: 0 0 20px 0;
+}
+
+.arrow-down {
+	margin-left: 12px;
+	padding-bottom: 2px;
+
+	--color: #{color-scheme.$accent};
+}

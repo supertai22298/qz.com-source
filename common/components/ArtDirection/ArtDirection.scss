@@ -1,0 +1,10 @@
+@use '~@quartz/styles/scss/helpers/positioning';
+
+.container {
+	position: relative;
+	display: block;
+}
+
+.image {
+	@include positioning.fit-to-container;
+}

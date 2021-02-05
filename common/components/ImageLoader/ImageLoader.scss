@@ -1,0 +1,9 @@
+@use '~styles/mixins/images';
+
+.container {
+	@include images.image-placeholder;
+
+	amp-img {
+		max-width: 100%;
+	}
+}

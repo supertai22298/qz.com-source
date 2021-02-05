@@ -1,0 +1,15 @@
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+
+.container {
+	border-radius: tokens.$size-border-radius;
+	flex-shrink: 0;
+	margin-right: 12px;
+	overflow: hidden;
+	width: 80px;
+
+	@include media-queries.tablet-portrait-up {
+		margin-right: 20px;
+		width: 180px;
+	}
+}

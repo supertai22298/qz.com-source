@@ -1,0 +1,24 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	color: color-scheme.$typography-faint;
+	margin: 4px 0;
+
+	img {
+		max-width: 120px;
+		max-height: 30px;
+		vertical-align: middle;
+
+		@include media-queries.tablet-landscape-up {
+			max-width: 150px;
+			max-height: 50px;
+		}
+	}
+}
+
+.label {
+	color: tokens.$color-gold;
+}

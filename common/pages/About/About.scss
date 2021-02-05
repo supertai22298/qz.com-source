@@ -1,0 +1,90 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/tokens' as qzcom-tokens;
+
+.heading {
+	@include fonts.maison-800-10;
+
+	position: relative;
+	text-align: center;
+	margin-top: 120px;
+	margin-bottom: 60px;
+	z-index: qzcom-tokens.$z-index-one;
+	max-width: 1200px;
+
+	@include media-queries.tablet-portrait-up {
+		margin-top: 80px;
+		margin-bottom: 80px;
+	}
+
+	@include media-queries.desktop-up {
+		margin-top: 160px;
+		margin-bottom: 160px;
+	}
+
+	@media (min-width: #{1200px + tokens.$size-gutter-desktop * 2}) {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100vw;
+		left: 50%;
+		top: 0;
+		margin-left: -50vw;
+		z-index: qzcom-tokens.$z-index-minus-one;
+		background: color-scheme.$background-1;
+		height: 100%;
+	}
+}
+
+.decoration-1,
+.decoration-2 {
+	display: inline-block;
+	position: relative;
+
+	&::before {
+		position: absolute;
+		background-repeat: no-repeat;
+		content: "";
+		background-size: 100%;
+	}
+}
+
+.decoration-1::before {
+	bottom: -20%;
+	top: -10%;
+	width: 130%;
+	left: -10%;
+	background-image: url('/public/svg/highlight-thick-circle-mobile.svg');
+
+	@include media-queries.tablet-portrait-up {
+		width: 140%;
+		left: -20px;
+		background-image: url('/public/svg/highlight-thick-circle.svg');
+	}
+
+	@include media-queries.tablet-landscape-up {
+		left: -25px;
+	}
+}
+
+.decoration-2::before {
+	bottom: -10%;
+	width: 100%;
+	top: 80%;
+	left: 0;
+	background-image: url('/public/svg/highlight-thick-underline-mobile.svg');
+
+	@include media-queries.tablet-portrait-up {
+		background-image: url('/public/svg/highlight-thick-underline.svg');
+	}
+}
+
+.culture {
+	overflow: hidden;
+}

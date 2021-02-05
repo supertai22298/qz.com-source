@@ -1,0 +1,24 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+
+.container {
+	background: color-scheme.$background-2;
+	padding: tokens.$size-gutter-mobile;
+	border-radius: tokens.$size-border-radius;
+	border: borders.$solid-decorative;
+	margin-bottom: 30px;
+
+	@include media-queries.tablet-portrait-up {
+		padding: tokens.$size-gutter-tablet;
+		margin-bottom: 50px;
+	}
+}
+
+.heading {
+	@include fonts.maison-800-4;
+
+	margin-top: 0;
+}

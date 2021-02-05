@@ -1,0 +1,15 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: color-scheme.$typography;
+	pointer-events: none;
+	opacity: 0;
+	z-index: qzcom-tokens.$z-index-two;
+	display: none;
+}

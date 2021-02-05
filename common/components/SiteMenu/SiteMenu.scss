@@ -1,0 +1,18 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/tokens' as qzcom-tokens;
+
+.section {
+	margin-bottom: 36px;
+}
+
+.section-heading {
+	@include fonts.maison-extended-700-1;
+
+	padding-bottom: 6px;
+	color: color-scheme.$typography-faint;
+	border-bottom: borders.$solid-decorative;
+	margin-bottom: qzcom-tokens.$size-height-spacing-heading;
+}

@@ -1,0 +1,44 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/tokens';
+@use '~@quartz/styles/scss/states';
+@use '~styles/mixins/layout';
+
+.container {
+	@include states.fade-on-hover;
+
+	display: block;
+}
+
+.thumbnail {
+	background-color: color-scheme.$background-3;
+	border-radius: tokens.$size-border-radius;
+	overflow: hidden;
+
+	&.large {
+		border-radius: 32px;
+	}
+}
+
+.title {
+	@include fonts.maison-800-2;
+
+	margin: 0.5em 0 0.25em;
+	color: color-scheme.$typography;
+	display: block;
+
+	&.large {
+		@include fonts.maison-800-4;
+	}
+}
+
+.short-description {
+	@include fonts.maison-500-1;
+
+	margin: 0;
+	color: color-scheme.$typography-faint;
+
+	&.large {
+		@include fonts.maison-500-3;
+	}
+}

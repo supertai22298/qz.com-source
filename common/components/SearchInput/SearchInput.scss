@@ -1,0 +1,65 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/positioning';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+
+.container {
+	position: relative;
+
+	@include media-queries.tablet-portrait-up {
+		max-width: 700px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+.label span {
+	display: none;
+}
+
+.search-icon {
+	@include positioning.vertical-center;
+
+	--color: #{color-scheme.$typography};
+
+	left: 16px;
+	width: 12px;
+	cursor: pointer;
+}
+
+.field {
+	@include resets.text-input;
+
+	color: color-scheme.$typography;
+	background-color: color-scheme.$background-2;
+	box-sizing: border-box;
+	font-size: 16px;
+	height: 45px;
+	padding-left: 38px;
+	width: 100%;
+	transition: all 0.25s;
+	border-radius: tokens.$size-border-radius;
+	border: borders.$solid-interactive;
+
+	&::placeholder {
+		color: color-scheme.$typography-faint;
+	}
+
+	&:hover,
+	&:focus {
+		border-color: color-scheme.$accent;
+	}
+
+	&::-webkit-search-cancel-button {
+		margin-right: 12px;
+	}
+
+	/* This specificity is necessary so that the border-radius
+	won't get outranked by the reset-text-input mix-in */
+	&[type=search] {
+		border-radius: tokens.$size-border-radius;
+	}
+}

@@ -1,0 +1,10 @@
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	@include resets.ul;
+}
+
+.item {
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+}

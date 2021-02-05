@@ -1,0 +1,74 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use 'styles/tokens' as qzcom-tokens;
+
+.container {
+	@include fonts.maison;
+
+	box-sizing: border-box;
+	margin: 0 auto;
+	min-height: 100%;
+	padding-bottom: 0;
+
+	&:focus {
+		/*
+			This is a rare situation where it's ok to remove focus styles. This
+			element is only focusable by us (using
+			helpers/dom.js#makeTabbableOnceAndFocus) so we can put the user's
+			focus somewhere useful on a route change.
+		*/
+
+		outline: none;
+	}
+
+	&.marquee-visible {
+		&.marquee-marquee {
+			padding-top: qzcom-tokens.$size-height-aspect-ratio-default;
+
+			@include media-queries.tablet-portrait-up {
+				padding-top: 520px;
+			}
+
+			@media print {
+				padding: 0;
+			}
+		}
+
+		&.billboard-marquee {
+			padding-top: qzcom-tokens.$size-height-ad-billboard;
+
+			@media print {
+				padding: 0;
+			}
+		}
+
+		&.leaderboard-marquee {
+			padding-top: qzcom-tokens.$size-height-ad-leaderboard;
+
+			@media print {
+				padding: 0;
+			}
+		}
+
+		&.medium-rectangle-marquee {
+			padding-top: qzcom-tokens.$size-height-ad-medium-rectangle;
+
+			@media print {
+				padding: 0;
+			}
+		}
+	}
+}
+
+.main {
+	background: color-scheme.$background-1;
+	position: relative;
+}
+
+.loading {
+	align-items: center;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+}

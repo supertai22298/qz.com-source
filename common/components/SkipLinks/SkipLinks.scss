@@ -1,0 +1,19 @@
+@use '~@quartz/styles/scss/helpers/a11y';
+@use '~styles/tokens' as qzcom-tokens;
+
+.link {
+	@include a11y.visually-hidden;
+
+	position: fixed;
+	top: 1em;
+	left: 1em;
+	z-index: qzcom-tokens.$z-index-seven;
+
+	&:focus {
+		overflow: visible;
+		border: initial;
+		clip: auto;
+		width: auto;
+		height: auto;
+	}
+}

@@ -1,0 +1,28 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/fonts';
+@use '~styles/tokens' as qzcom-tokens;
+
+.cta-container {
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+}
+
+.perks-container {
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+
+	@include media-queries.tablet-portrait-up {
+		margin-right: -32px;
+		margin-left: -32px;
+	}
+}
+
+.perks-heading {
+	@include fonts.maison-extended-700-1;
+
+	color: color-scheme.$typography-faint;
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+}
+
+.hints {
+	@include fonts.maison-800-2;
+}

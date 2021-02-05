@@ -1,0 +1,85 @@
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~@quartz/styles/scss/states';
+@use '~@quartz/styles/scss/helpers/a11y';
+@use '~styles/mixins/layout';
+@use '~styles/mixins/print';
+@use '~styles/tokens' as qzcom-tokens;
+
+$bottom-bar-height: 45px;
+$bottom-bar-height-tablet: 70px;
+
+.container {
+	@include fonts.maison-800-2;
+	@include print.hide-when-printing;
+
+	background-color: tokens.$color-black;
+	bottom: -$bottom-bar-height;
+	color: tokens.$color-white;
+	height: $bottom-bar-height;
+	left: 0;
+	position: fixed;
+	right: 0;
+	transition: bottom tokens.$time-slowly;
+	z-index: qzcom-tokens.$z-index-six;
+
+	@include media-queries.tablet-portrait-up {
+		bottom: -$bottom-bar-height-tablet;
+		height: $bottom-bar-height-tablet;
+	}
+
+	&.visible {
+		bottom: 0;
+	}
+
+	a {
+		color: tokens.$color-white;
+	}
+}
+
+.inner-container {
+	@include layout.constrain;
+
+	line-height: $bottom-bar-height;
+	margin-left: tokens.$size-gutter-mobile;
+
+	@include media-queries.tablet-portrait-up {
+		margin-left: tokens.$size-gutter-tablet;
+		line-height: $bottom-bar-height-tablet;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		margin-left: tokens.$size-gutter-desktop;
+	}
+}
+
+.close {
+	@include resets.button;
+	@include states.fade-on-hover;
+
+	bottom: 0;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: $bottom-bar-height;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 40px;
+
+	@include media-queries.tablet-portrait-up {
+		right: 10px;
+		line-height: $bottom-bar-height-tablet;
+	}
+
+	&::before {
+		color: tokens.$color-white;
+		content: '✕';
+	}
+
+	.label {
+		@include a11y.visually-hidden;
+	}
+}

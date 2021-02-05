@@ -1,0 +1,34 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~styles/tokens' as qzcom-tokens;
+
+.link {
+	display: flex;
+	flex-direction: row;
+	color: inherit;
+	align-items: flex-start;
+}
+
+.meta {
+	max-width: 470px;
+}
+
+.headline {
+	@include fonts.maison-800-4;
+
+	display: block;
+	margin-bottom: 8px;
+}
+
+.dateline {
+	@include fonts.maison-500-1;
+
+	color: color-scheme.$typography-faint;
+}
+
+.edition {
+	&::before {
+		content: '•';
+		margin: 0 0.5em;
+	}
+}

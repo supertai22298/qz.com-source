@@ -1,0 +1,164 @@
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/tokens' as qzcom-tokens;
+
+/*
+	Article media layout mixins
+
+	These are applied to inline images, videos and interactives within
+	articles. Size and alignment parameters come from the CMS, either by
+	the WP 'Add Media' button or shortcode attributes.
+
+	NB: Wordpress offers four alignment options for images: 'left',
+	'right', 'center' and 'none'. However in actuality we only support
+	'left' and 'none' ('right' and 'center' effectively default to
+	'none'). Furthermore, in some cases the left-aligned version of an
+	image actually just makes the image larger, and _sometimes_ pulls it
+	further to the left to accommodate the increased width. It's all
+	quite complicated and needs to be renamed, but for now you should
+	consider the following mixins to be the gospel truth for which inline
+	media layouts we supprt.
+*/
+
+// The space available either side of the article content at larger breakpoints
+$size-article-gutters-total: qzcom-tokens.$size-max-width-content - qzcom-tokens.$size-max-width-content-article;
+
+/*
+	Default styles that all article media layout mixins inherit. Do not
+	use directly.
+*/
+@mixin _article-media {
+	clear: both;
+	margin-bottom: qzcom-tokens.$size-height-spacing-block;
+	margin-left: 0;
+	width: 100%;
+	height: auto;
+	float: none;
+	max-width: none;
+	transform: none;
+}
+
+/* Roughly half the width of article content, text wraps to the left. */
+@mixin small {
+	@include _article-media;
+
+	@include media-queries.tablet-portrait-up {
+		width: qzcom-tokens.$size-width-inline-image-small;
+		margin-right: 0;
+		margin-left: 50px;
+		float: right;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		width: qzcom-tokens.$size-width-inline-image-extra-small;
+	}
+}
+
+@mixin small--centered {
+	@include small;
+
+	@include media-queries.tablet-portrait-up {
+		margin-right: auto;
+		margin-left: auto;
+		float: none;
+	}
+}
+
+/* Roughly half the width of article content, text wraps to the right. */
+@mixin small--left-align {
+	@include small;
+
+	@include media-queries.tablet-portrait-up {
+		float: left;
+		margin-right: 50px;
+		margin-left: 0;
+	}
+}
+
+/* Matches the width of the article content at all breakpoints. */
+@mixin medium {
+	@include _article-media;
+}
+
+/*
+	Matches the width of the article content at all breakpoints. At
+	desktop up, overlaps the sidebar with text wrapping to the right
+*/
+@mixin medium--left-align {
+	@include medium;
+
+	@include media-queries.desktop-up {
+		margin-right: 50px;
+		margin-left: #{-$size-article-gutters-total};
+		float: left;
+	}
+}
+
+/*
+	Matches the width of article content below desktop. Above desktop,
+	jumps to qzcom-tokens.$size-max-width-content and overflows half the sidebar.
+*/
+@mixin large {
+	@include _article-media;
+
+	@include media-queries.desktop-up {
+		width: qzcom-tokens.$size-max-width-content;
+		max-width: none;
+		margin-left: -$size-article-gutters-total / 2;
+	}
+}
+
+/*
+	Matches the width of article content below desktop. Above desktop,
+	matches viewport width (minus gutters) before maxing out at
+	qzcom-tokens.$size-width-inline-image-extra-large.
+*/
+@mixin extra-large {
+	@include _article-media;
+
+	@include media-queries.desktop-up {
+		width: calc(((100vw - #{qzcom-tokens.$size-max-width-content}) / 2) + #{qzcom-tokens.$size-max-width-content} - 25px);
+		max-width: qzcom-tokens.$size-width-inline-image-extra-large;
+		margin-left: -$size-article-gutters-total;
+	}
+}
+
+/* Same as extra-large but for single-column (premium) articles. */
+@mixin extra-large--centered {
+	@include _article-media;
+
+	@include media-queries.tablet-landscape-up {
+		width: calc(100vw - 2 * 25px);
+		margin-left: calc((((100vw - #{qzcom-tokens.$size-max-width-content-article}) / 2) * -1) + 25px);
+	}
+
+	@include media-queries.desktop-large-up {
+		width: qzcom-tokens.$size-max-width-site;
+		margin-left: calc((((100vw - #{qzcom-tokens.$size-max-width-content-article}) / 2) * -1) + ((100vw - #{qzcom-tokens.$size-max-width-site}) / 2));
+	}
+}
+
+/*
+	Matches the width of article content below desktop. Above desktop,
+	matches the viewport width (without gutters) before maxing out at
+	1600px.
+*/
+@mixin full-bleed {
+	@include _article-media;
+
+	width: 100vw;
+	margin-left: -#{tokens.$size-gutter-mobile};
+
+	@include media-queries.tablet-portrait-up {
+		margin-left: calc((100vw - #{qzcom-tokens.$size-max-width-content-article}) * -0.5);
+	}
+
+	@include media-queries.desktop-up {
+		max-width: qzcom-tokens.$size-max-width-site;
+	}
+
+	/* Once the image's max-width (1600px) is reached: */
+	@include media-queries.desktop-large-up {
+		margin-left: (qzcom-tokens.$size-max-width-content - qzcom-tokens.$size-max-width-content-article) * -0.5;
+	}
+}

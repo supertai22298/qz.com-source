@@ -1,0 +1,85 @@
+@use '~@quartz/styles/scss/media-queries';
+
+.container {
+	display: block;
+
+	@include media-queries.tablet-portrait-up {
+		display: flex;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		margin: 0 auto;
+	}
+}
+
+.primary {
+	@include media-queries.tablet-portrait-up {
+		flex: 50%;
+	}
+}
+
+.secondary {
+	margin-top: 10px;
+
+	@include media-queries.tablet-portrait-up {
+		margin-top: 0;
+		flex: 50%;
+		margin-left: 10px;
+	}
+}
+
+/* Buttons share space evenly at all breakpoints*/
+.style-side-by-side {
+	&.container {
+		display: flex;
+		width: 100%;
+
+
+		@include media-queries.tablet-landscape-up {
+			margin: 0;
+		}
+	}
+
+	&.primary,
+	&.secondary {
+		flex: 100%;
+	}
+
+	&.secondary {
+		margin: 0 0 0 10px;
+
+		@include media-queries.tablet-portrait-up {
+			margin-left: 20px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			margin-top: 0;
+		}
+	}
+}
+
+.style-side-by-side-small {
+	&.container {
+		@include media-queries.tablet-portrait-up {
+			width: 175px;
+			margin: 0 14px 0 0;
+		}
+	}
+
+	&.primary,
+	&.secondary {
+		flex: auto;
+	}
+
+	&.secondary {
+		margin: 0 0 0 10px;
+
+		@include media-queries.tablet-portrait-up {
+			margin-left: 20px;
+		}
+
+		@include media-queries.tablet-landscape-up {
+			margin-top: 0;
+		}
+	}
+}

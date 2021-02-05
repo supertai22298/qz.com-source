@@ -1,0 +1,13 @@
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/states';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	@include resets.ul;
+}
+
+.item {
+	@include states.fade-on-hover;
+
+	margin-bottom: qzcom-tokens.$size-height-spacing-list-item;
+}

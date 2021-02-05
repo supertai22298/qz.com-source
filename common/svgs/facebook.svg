@@ -1,0 +1,7 @@
+import * as React from "react";
+
+function SvgFacebook(props) {
+  return <svg width={25} height={25} viewBox="0 0 25 25" {...props}><path d="M1.379 0A1.38 1.38 0 0 0 0 1.38v22.241C0 24.384.62 25 1.379 25h11.779v-9.21h-3.29v-3.948h3.29V8.763c.195-3.227 2.166-4.987 5.047-4.987 1.38 0 2.566.103 2.848.15V7.3h-1.936c-1.566 0-1.868.743-1.868 1.838l.021 2.752 3.783-.048-.658 3.947h-3.29L17.25 25h6.371A1.38 1.38 0 0 0 25 23.621V1.381A1.383 1.383 0 0 0 23.62 0H1.379z" fill="var(--color,#000)" fillRule="evenodd" /></svg>;
+}
+
+export default SvgFacebook;

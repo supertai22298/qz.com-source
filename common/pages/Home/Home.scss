@@ -1,0 +1,102 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~@quartz/styles/scss/helpers/a11y';
+@use '~styles/tokens' as qzcom-tokens;
+
+$gutter-width: 50px;
+
+.container {
+	@include fonts.maison-500-4;
+
+	background-color: color-scheme.$background-1;
+	border-top: borders.$solid-decorative;
+}
+
+.columns {
+	display: flex;
+	max-width: qzcom-tokens.$size-max-width-site;
+	margin: auto;
+}
+
+.left-rail-container,
+.right-rail-container {
+	box-sizing: border-box;
+	padding: $gutter-width;
+	flex-shrink: 0;
+	height: calc(100vh - #{qzcom-tokens.$size-height-nav-tablet});
+	width: 360px;
+
+	@include media-queries.tablet-landscape-up {
+		position: -webkit-sticky;
+		position: sticky;
+		top: qzcom-tokens.$size-height-nav-tablet + 1px; // Header height plus border width
+	}
+
+	@include media-queries.desktop-up {
+		width: calc(18% + #{$gutter-width * 2});
+	}
+}
+
+.left-rail-container {
+	display: none;
+
+	@include media-queries.desktop-up {
+		display: block;
+	}
+}
+
+.right-rail-container {
+	display: none;
+
+	@include media-queries.tablet-landscape-up {
+		display: block;
+		overflow-y: auto;
+	}
+}
+
+.rail-heading {
+	@include fonts.maison-extended-700-1;
+
+	text-transform: uppercase;
+	border-bottom: borders.$solid-decorative;
+	margin: 0 0 qzcom-tokens.$size-height-spacing-heading;
+	padding-bottom: 16px;
+	color: color-scheme.$typography-faint;
+}
+
+.center-well-container {
+	flex-grow: 1;
+	padding: tokens.$size-gutter-mobile;
+
+	@include media-queries.tablet-portrait-up {
+		padding: $gutter-width;
+		max-width: qzcom-tokens.$size-max-width-content-article + $gutter-width * 2;
+		border-right: borders.$solid-decorative;
+		border-left: borders.$solid-decorative;
+		margin: 0 auto;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		border-left: 0;
+		max-width: none;
+	}
+
+	@include media-queries.desktop-up {
+		border-left: borders.$solid-decorative;
+	}
+}
+
+.page-heading {
+	@include a11y.visually-hidden;
+}
+
+.guide-promo-container {
+	margin-bottom: 20px;
+}
+
+.featured-image-container {
+	margin-bottom: qzcom-tokens.$size-height-spacing-section;
+}

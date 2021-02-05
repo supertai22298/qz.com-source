@@ -1,0 +1,79 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~styles/mixins/print';
+@use '~styles/tokens' as qzcom-tokens;
+
+.container {
+	--color: #{color-scheme.$typography};
+
+	@include media-queries.tablet-landscape-up {
+		display: none;
+	}
+
+	@include print.hide-when-printing;
+
+	// Rather than conditionally adding padding to the whole app container, just
+	// put the padding on the tab bar itself, which will render or not. Note that
+	// this means TabBar needs to be rendered last, after any other content in the
+	// normal flow;
+	&::before {
+		display: block;
+		content: '';
+		height: qzcom-tokens.$size-height-nav-mobile;
+		width: 100%;
+	}
+}
+
+.tabs {
+	@include resets.ul;
+
+	align-items: center;
+	background-color: color-scheme.$background-1;
+	border-top: borders.$solid-decorative;
+	bottom: 0;
+	display: flex;
+	flex-wrap: nowrap;
+	font-size: 10px;
+	height: qzcom-tokens.$size-height-nav-mobile;
+	justify-content: space-around;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	z-index: qzcom-tokens.$z-index-four;
+
+	/*
+	 * Offset the "home bar" on iOS devices without a home button. The padding
+	 * provided by safe-area-inset-bottom is a bit more than we want, so subtract
+	 * some. Make sure we don't add negative padding for non-iOS devices.
+	 *
+	 * We need to use Sass's unquote because max is both a Sass function and a CSS
+	 * function and we want Sass to ignore it.
+	 */
+	padding-bottom: unquote('max(0px, calc(env(safe-area-inset-bottom, 0px) - 16px))');
+}
+
+.tab {
+	flex-basis: 100%;
+}
+
+.link {
+	color: inherit;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+
+	&[aria-current="true"] {
+		--color: #{color-scheme.$accent};
+
+		color: color-scheme.$accent;
+	}
+}
+
+.icon {
+	margin: auto;
+	width: auto;
+	height: 19px;
+	display: block;
+	margin-bottom: 4px;
+}

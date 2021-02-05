@@ -1,0 +1,75 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/helpers/resets';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use '~styles/mixins/layout';
+@use '~styles/tokens' as qzcom-tokens;
+
+@mixin form-block-layout {
+	margin: auto;
+	max-width: qzcom-tokens.$size-max-width-content-article;
+	width: 100%;
+}
+
+@mixin form-page-layout {
+	@include layout.constrain;
+
+	margin-top: qzcom-tokens.$size-height-spacing-section;
+	margin-bottom: qzcom-tokens.$size-height-spacing-section;
+}
+
+@mixin form-field-title {
+	@include fonts.maison-extended-700-1;
+
+	text-transform: uppercase;
+	margin: 0 0 10px;
+	color: color-scheme.$typography;
+}
+
+@mixin form-field-description {
+	@include fonts.maison-500-1;
+
+	color: color-scheme.$typography-faint;
+}
+
+@mixin textarea {
+	@include resets.text-input;
+
+	resize: none;
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	font-size: 16px;
+	line-height: 1.25;
+	color: color-scheme.$typography;
+	border: borders.$solid-interactive;
+	background-color: color-scheme.$background-2;
+	border-radius: tokens.$size-border-radius;
+	padding: 12px;
+	margin-bottom: 10px;
+
+	&:focus,
+	&:hover {
+		border-color: color-scheme.$accent;
+	}
+
+	&::placeholder {
+		color: color-scheme.$typography-faint;
+	}
+}
+
+@mixin disclaimer {
+	@include fonts.maison-500-1;
+
+	margin: 8px 0 0;
+	color: color-scheme.$typography-faint;
+}
+
+@mixin error {
+	@include fonts.maison-500-1;
+
+	margin: 10px 0 0;
+	color: tokens.$color-red;
+}

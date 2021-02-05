@@ -1,0 +1,244 @@
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/fonts';
+
+.intro {
+	max-width: 460px;
+
+	@include fonts.pt-serif-400-1;
+
+	@include media-queries.desktop-large-up {
+		max-width: 660px;
+	}
+}
+
+.pinboard {
+	box-sizing: border-box;
+
+	@include media-queries.tablet-portrait-up {
+		padding-top: 50px;
+	}
+
+	/* Compensate for the nav left gutter in PageSection */
+	@include media-queries.tablet-landscape-up {
+		margin-left: -140px;
+	}
+
+	@include media-queries.desktop-up {
+		margin-left: -210px;
+		margin-top: 100px;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-left: 0;
+	}
+
+	.row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.photo-0 {
+	position: absolute;
+	right: 0;
+	top: -10px;
+	transform: rotate(6deg) translate(13%, -60%);
+	width: 33vw;
+	max-width: 210px;
+
+	@include media-queries.tablet-portrait-up {
+		max-width: 485px;
+		transform: rotate(8deg) translate(20%, -20%);
+		top: -100px;
+	}
+
+	@include media-queries.desktop-up {
+		width: 35vw;
+		transform: rotate(6deg) translate(35%, -35%);
+		top: -50px;
+	}
+
+	@include media-queries.desktop-large-up {
+		width: 22vw;
+		transform: rotate(6deg) translate(0, -15%);
+	}
+
+	@include media-queries.desktop-large-up {
+		transform: rotate(6deg) translate(-30%, -30%);
+	}
+}
+
+.photo-1 {
+	margin: 50px 0 70px -40px;
+	transform: rotate(-6deg);
+	width: 70vw;
+	max-width: 665px;
+
+	@include media-queries.tablet-portrait-up {
+		width: 48vw;
+		margin-left: -120px;
+	}
+
+	@include media-queries.desktop-up {
+		width: 55vw;
+		margin-top: 50px;
+		margin-left: -130px;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-left: 0;
+	}
+}
+
+.photo-2 {
+	margin: 40px 0 56px;
+	transform: rotate(3deg);
+	width: 32vw;
+	max-width: 386px;
+
+	@include media-queries.tablet-portrait-up {
+		margin-bottom: 80px;
+		margin-left: 30px;
+	}
+
+	@include media-queries.desktop-up {
+		margin: 130px 0 0 90px;
+		transform: rotate(5deg);
+	}
+}
+
+.photo-3 {
+	margin: 0 -35px 100px 0;
+	transform: rotate(10deg);
+	width: 46vw;
+	max-width: 650px;
+
+	@include media-queries.tablet-portrait-up {
+		width: 41vw;
+		margin-bottom: 0;
+		margin-right: -70px;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		margin-right: -100px;
+	}
+
+	@include media-queries.desktop-up {
+		margin-top: -200px;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-right: 140px;
+		max-width: 490px;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-right: 300px;
+	}
+}
+
+.photo-4 {
+	margin: 0 0 0 -42px;
+	transform: rotate(-13deg);
+	width: 40vw;
+	max-width: 590px;
+
+	@include media-queries.tablet-portrait-up {
+		order: 1;
+		margin-left: -80px;
+	}
+
+	@include media-queries.desktop-up {
+		margin-top: 100px;
+		margin-left: -200px;
+		width: 57.5vw;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-left: 0;
+	}
+}
+
+.photo-5 {
+	margin: 0 -50px 0 auto;
+	transform: rotate(9deg);
+	width: 62vw;
+	max-width: 590px;
+
+	@include media-queries.tablet-portrait-up {
+		width: 40vw;
+		margin: 40px -70px 80px 0;
+		order: 2;
+	}
+
+	@include media-queries.desktop-up {
+		margin: 100px -150px 110px 0;
+		width: 57.5vw;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-right: 0;
+	}
+}
+
+.tweet-2 {
+	@include media-queries.tablet-portrait-up {
+		order: 2;
+	}
+}
+
+.annotation {
+	@include fonts.maison-800-2;
+
+	position: relative;
+	padding-top: 190px;
+	text-align: center;
+	width: 180px;
+	transform: rotate(-10deg);
+	margin: -50px auto 0 0;
+	left: 40px;
+	color: color-scheme.$typography-faint;
+
+	@include media-queries.tablet-portrait-up {
+		order: 1;
+		width: 230px;
+		padding-top: 175px;
+		padding-left: 130px;
+		left: 0;
+	}
+
+	@include media-queries.tablet-landscape-up {
+		margin-left: 90px;
+	}
+
+	@include media-queries.desktop-up {
+		margin-top: -30px;
+	}
+
+	@include media-queries.desktop-large-up {
+		margin-left: 200px;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-image: url('/public/svg/annotation-line-with-arrow-2.svg');
+		background-repeat: no-repeat;
+		background-position: 0 100%;
+		background-size: 100%;
+		width: 87px;
+		height: 175px;
+		transform: scaleX(-1) rotate(30deg);
+
+		@include media-queries.tablet-portrait-up {
+			transform: scaleX(-1) rotate(60deg);
+			width: 107px;
+			height: 195px;
+		}
+	}
+}

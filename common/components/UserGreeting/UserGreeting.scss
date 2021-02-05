@@ -1,0 +1,11 @@
+@use '~@quartz/styles/scss/fonts';
+
+.container {
+	@include fonts.maison-800-5;
+
+	margin: 0 0 20px;
+
+	&.placeholder {
+		visibility: hidden;
+	}
+}

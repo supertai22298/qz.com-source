@@ -1,0 +1,118 @@
+@use '~@quartz/styles/scss/borders';
+@use '~@quartz/styles/scss/color-scheme';
+@use '~@quartz/styles/scss/fonts';
+@use '~@quartz/styles/scss/media-queries';
+@use '~@quartz/styles/scss/tokens';
+@use 'styles/tokens' as qzcom-tokens;
+
+.container {
+	@include fonts.maison-500-2;
+}
+
+.wrapper {
+	background-color: color-scheme.$background-2;
+	border: borders.$solid-decorative;
+	border-radius: tokens.$size-border-radius;
+	margin-top: qzcom-tokens.$size-height-spacing-block;
+	padding: 20px 12px;
+
+	@include media-queries.tablet-portrait-up {
+		padding: 28px;
+	}
+}
+
+.title,
+.thanks {
+	@include fonts.maison-800-4;
+}
+
+.title,
+.want-more {
+	margin: 0 0 20px 0;
+}
+
+.thanks {
+	margin: 0 0 12px 0;
+}
+
+.content {
+	@include media-queries.tablet-portrait-up {
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+.email,
+.button-wrapper {
+	flex-grow: 1;
+}
+
+.email {
+	margin-bottom: 8px;
+
+	@include media-queries.tablet-portrait-up {
+		margin-right: 12px;
+		margin-bottom: 0;
+	}
+}
+
+.button-wrapper {
+	/*
+		This forces the container to be no wider than the button needs to be
+	*/
+	@include media-queries.tablet-portrait-up {
+		width: 0;
+		min-width: 140px;
+	}
+}
+
+.check-ctas {
+	width: 100%;
+
+	@include media-queries.tablet-portrait-up {
+		display: flex;
+	}
+}
+
+.button {
+	margin-bottom: 8px;
+
+	@include media-queries.tablet-portrait-up {
+		flex: 50%;
+	}
+}
+
+.button:first-child {
+	@include media-queries.tablet-portrait-up {
+		margin-right: 12px;
+	}
+}
+
+.disclaimer {
+	@include fonts.maison-500-1;
+
+	margin: 8px 0 0;
+	color: color-scheme.$typography-faint;
+}
+
+.error-message {
+	color: tokens.$color-red;
+	font-size: 12px;
+	line-height: 1.33;
+	margin: 5px 0 10px 0;
+	max-width: 440px;
+	text-align: left;
+}
+
+.confirmation-text {
+	composes: title;
+	margin-bottom: 12px;
+}
+
+.member-link {
+	margin-bottom: 20px;
+}
+
+.party {
+	margin-right: 4px;
+}
